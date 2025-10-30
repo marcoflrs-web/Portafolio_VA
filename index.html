@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visión Artificial con Python</title>
+    <title>Python y Visión Artificial</title>
     <style>
         * {
             margin: 0;
@@ -13,215 +13,246 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
             line-height: 1.6;
+            color: #e0e0e0;
+            background: #0a0a0a;
         }
 
-        /* Portada */
+        /* Hero Section */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2rem;
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            color: #ffffff;
+            padding: 120px 20px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 2px solid #333;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(139, 0, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(75, 0, 130, 0.1) 0%, transparent 50%);
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .hero h1 {
-            font-size: clamp(2rem, 5vw, 4rem);
-            font-weight: 300;
-            margin-bottom: 2rem;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(139, 0, 0, 0.8), 0 0 40px rgba(139, 0, 0, 0.4);
+            color: #ffffff;
+            font-weight: 700;
             letter-spacing: 2px;
         }
 
-        .hero-info {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem 2rem;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.85;
+            color: #b0b0b0;
         }
 
-        .hero-info p {
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            margin-bottom: 0.5rem;
-        }
-
-        .hero-info .author {
-            font-weight: 600;
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-        }
-
-        /* Catálogo */
-        .catalog {
+        /* Container */
+        .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 60px 20px;
         }
 
-        .catalog h2 {
+        .section-title {
             text-align: center;
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            font-weight: 300;
-            margin-bottom: 3rem;
-            color: #667eea;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+            letter-spacing: 1px;
         }
 
-        .cards-container {
+        /* Cards Grid */
+        .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            padding: 1rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
 
         .card {
-            background: white;
+            background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.6), 0 0 0 1px #2a2a2a;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
+            border: 1px solid #222;
         }
 
         .card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 12px 30px rgba(139, 0, 0, 0.4), 0 0 20px rgba(139, 0, 0, 0.2);
+            border-color: #8b0000;
         }
 
         .card-image {
             width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 220px;
+            background: linear-gradient(135deg, #2a0000 0%, #1a0a1a 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
-            color: white;
+            font-size: 5rem;
+            color: #8b0000;
+            position: relative;
+            border-bottom: 2px solid #333;
+        }
+
+        .card-image::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 2px solid rgba(139, 0, 0, 0.3);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 20px rgba(139, 0, 0, 0.3);
         }
 
         .card-content {
-            padding: 1.5rem;
-            text-align: center;
+            padding: 25px;
+            background: #141414;
         }
 
-        .card-content h3 {
-            font-size: 1.3rem;
-            font-weight: 400;
-            color: #333;
-            margin-bottom: 0.5rem;
+        .card-title {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(139, 0, 0, 0.3);
         }
 
-        .card-number {
+        .card-description {
+            color: #999;
+            margin-bottom: 20px;
+            line-height: 1.7;
+            min-height: 60px;
+        }
+
+        .download-btn {
             display: inline-block;
-            background: #667eea;
+            background: linear-gradient(135deg, #8b0000 0%, #4b0082 100%);
             color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            line-height: 30px;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            border: 1px solid #8b0000;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(139, 0, 0, 0.6);
+            background: linear-gradient(135deg, #a00000 0%, #5b0096 100%);
         }
 
         /* Responsive */
         @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
             .hero {
-                padding: 1.5rem;
+                padding: 80px 20px;
             }
 
-            .catalog {
-                padding: 3rem 1.5rem;
+            .cards-grid {
+                grid-template-columns: 1fr;
             }
 
-            .cards-container {
-                gap: 1.5rem;
+            .section-title {
+                font-size: 2rem;
             }
         }
 
         @media (max-width: 480px) {
-            .cards-container {
-                grid-template-columns: 1fr;
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .card-content {
+                padding: 20px;
+            }
+
+            .card-image {
+                height: 180px;
+                font-size: 4rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Portada -->
+    <!-- Hero Section -->
     <section class="hero">
-        <h1>Visión Artificial con Python</h1>
-        <div class="hero-info">
-            <p class="author">MARCO ANTONIO FLORES FLORES</p>
-            <p>Especialidad en Inteligencia Artificial</p>
-            <p>CBTIS 144</p>
+        <div class="hero-content">
+            <h1>Python y Visión Artificial</h1>
+            <p>Proyectos avanzados de procesamiento y análisis de imágenes</p>
         </div>
     </section>
 
-    <!-- Catálogo -->
-    <section class="catalog">
-        <h2>Proyectos</h2>
-        <div class="cards-container">
-            <!-- Card 1 -->
+    <!-- Catalog Section -->
+    <div class="container">
+        <h2 class="section-title">Catálogo de Ejercicios</h2>
+        
+        <div class="cards-grid">
+            <!-- Card 1: Ejercicio 1 -->
             <div class="card">
-                <div class="card-image">📂</div>
+                <div class="card-image">👁️</div>
                 <div class="card-content">
-                    <span class="card-number">1</span>
-                    <h3>Abrir Imagen con Python</h3>
-                    <a href="abririmagen.html">link de prueba</a>
+                    <h3 class="card-title">Ejercicio 1</h3>
+                    <p class="card-description">Implementación de algoritmos fundamentales de visión por computadora para detección y reconocimiento de patrones en imágenes.</p>
+                    <button class="download-btn" onclick="alert('Descargando código del Ejercicio 1...')">Descargar Código</button>
                 </div>
             </div>
 
-            <!-- Card 2 -->
+            <!-- Card 2: Ejercicio 2 -->
             <div class="card">
-                <div class="card-image">⚫</div>
+                <div class="card-image">📷</div>
                 <div class="card-content">
-                    <span class="card-number">2</span>
-                    <h3>Escala de Grises</h3>
-                    <a href="escaladegrises.html">link de prueba</a>
+                    <h3 class="card-title">Ejercicio 2</h3>
+                    <p class="card-description">Procesamiento avanzado de imágenes utilizando técnicas de filtrado, transformaciones y análisis de características visuales.</p>
+                    <button class="download-btn" onclick="alert('Descargando código del Ejercicio 2...')">Descargar Código</button>
                 </div>
             </div>
 
-            <!-- Card 3 -->
+            <!-- Card 3: Convertir -->
             <div class="card">
-                <div class="card-image">ℹ️</div>
+                <div class="card-image">🔄</div>
                 <div class="card-content">
-                    <span class="card-number">3</span>
-                    <h3>Información de Imagen</h3>
-                    <a href="infoimagen.html">link de prueba</a>
+                    <h3 class="card-title">Convertir</h3>
+                    <p class="card-description">Herramientas para convertir formatos de imagen, aplicar transformaciones y optimizar archivos para diferentes aplicaciones de visión artificial.</p>
+                    <button class="download-btn" onclick="alert('Descargando código de Convertir...')">Descargar Código</button>
                 </div>
             </div>
-
-            <!-- Card 4 -->
-            <div class="card">
-                <div class="card-image">📐</div>
-                <div class="card-content">
-                    <span class="card-number">4</span>
-                    <h3>Ajustar Tamaño</h3>
-                    <a href="ajustarimagen.html">link de prueba</a>
-                </div>
-            </div>
-
-            <!-- Card 5 -->
-            <div class="card">
-                <div class="card-image">📏</div>
-                <div class="card-content">
-                    <span class="card-number">5</span>
-                    <h3>Escala de imagenes</h3>
-                    <a href="Escaladeimagenes.html">link de prueba</a>
-                </div>
-            </div>
-
-            <!-- Card 6 -->
-            <div class="card">
-                <div class="card-image">Ⓜ</div>
-                <div class="card-content">
-                    <span class="card-number">6</span>
-                    <h3>Movimiento</h3>
-                    <a href="movimiento.html">link de prueba</a>
-        </div> 
-    </section>
+        </div>
+    </div>
 </body>
 </html>
