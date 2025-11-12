@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visión Artificial con Python</title>
+    <title>Movimiento</title>
     <style>
         * {
             margin: 0;
@@ -13,283 +13,290 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0a0a0a;
-            color: #e0e0e0;
-            line-height: 1.6;
-        }
-
-        /* Portada */
-        .hero {
+            background: #0a0a0a;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
-            color: white;
-            padding: 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 2px solid #333;
+            padding: 40px 20px;
+            color: #e0e0e0;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(139, 0, 0, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(75, 0, 130, 0.1) 0%, transparent 50%);
-            opacity: 0.5;
-        }
-
-        .hero h1 {
-            font-size: clamp(2rem, 5vw, 4rem);
-            font-weight: 700;
-            margin-bottom: 2rem;
-            letter-spacing: 2px;
-            text-shadow: 0 0 20px rgba(139, 0, 0, 0.8), 0 0 40px rgba(139, 0, 0, 0.4);
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-info {
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem 2rem;
-            border-radius: 10px;
-            border: 1px solid #8b0000;
-            box-shadow: 0 0 20px rgba(139, 0, 0, 0.3);
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-info p {
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            margin-bottom: 0.5rem;
-            color: #b0b0b0;
-        }
-
-        .hero-info .author {
-            font-weight: 600;
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-            color: #ffffff;
-            text-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
-        }
-
-        /* Catálogo */
-        .catalog {
+        .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 2rem;
         }
 
-        .catalog h2 {
+        .header {
             text-align: center;
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(139, 0, 0, 0.8), 0 0 40px rgba(139, 0, 0, 0.4);
             font-weight: 700;
-            margin-bottom: 3rem;
-            color: #ffffff;
-            text-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
             letter-spacing: 1px;
         }
 
-        .cards-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            padding: 1rem 0;
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.85;
+            color: #b0b0b0;
         }
 
-        .card {
+        .content-wrapper {
             background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.6), 0 0 0 1px #2a2a2a;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid #222;
-            cursor: pointer;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            border: 1px solid #2a2a2a;
         }
 
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 30px rgba(139, 0, 0, 0.4), 0 0 20px rgba(139, 0, 0, 0.2);
+        .tema-titulo {
+            background: linear-gradient(135deg, #2a0000 0%, #1a0a1a 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(139, 0, 0, 0.4);
+            border: 1px solid #8b0000;
+        }
+
+        .tema-titulo h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(139, 0, 0, 0.6);
+            font-weight: 700;
+        }
+
+        .tema-titulo p {
+            font-size: 1.1em;
+            opacity: 0.9;
+            color: #b0b0b0;
+        }
+
+        .section {
+            background: #141414;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+            border: 1px solid #222;
+        }
+
+        .section h3 {
+            color: #ffffff;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #8b0000;
+            text-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+            font-weight: 600;
+        }
+
+        .code-container {
+            background: #000000;
+            border-radius: 10px;
+            padding: 20px;
+            overflow-x: auto;
+            margin-top: 15px;
+            border: 1px solid #333;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .code-container pre {
+            margin: 0;
+            color: #e2e8f0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .glosario-item {
+            background: #1a1a1a;
+            border-left: 4px solid #8b0000;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #2a2a2a;
+        }
+
+        .glosario-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(139, 0, 0, 0.4);
             border-color: #8b0000;
         }
 
-        .card-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, #2a0000 0%, #1a0a1a 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: #8b0000;
-            position: relative;
-            border-bottom: 2px solid #333;
-        }
-
-        .card-image::after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            border: 2px solid rgba(139, 0, 0, 0.3);
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 20px rgba(139, 0, 0, 0.3);
-        }
-
-        .card-content {
-            padding: 1.5rem;
-            text-align: center;
-            background: #141414;
-        }
-
-        .card-content h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
+        .glosario-item h4 {
             color: #ffffff;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 0 10px rgba(139, 0, 0, 0.3);
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            text-shadow: 0 0 10px rgba(139, 0, 0, 0.4);
         }
 
-        .card-number {
-            display: inline-block;
-            background: linear-gradient(135deg, #8b0000 0%, #4b0082 100%);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            line-height: 40px;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-            box-shadow: 0 0 15px rgba(139, 0, 0, 0.5);
+        .glosario-item p {
+            color: #999;
+            line-height: 1.6;
+            margin-bottom: 10px;
         }
 
-        .card-content a {
-            display: inline-block;
-            color: #8b0000;
-            text-decoration: none;
-            padding: 8px 20px;
-            border: 1px solid #8b0000;
-            border-radius: 20px;
-            margin-top: 0.5rem;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-
-        .card-content a:hover {
-            background: linear-gradient(135deg, #8b0000 0%, #4b0082 100%);
-            color: white;
-            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.4);
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
-            .hero {
-                padding: 1.5rem;
+            .content-wrapper {
+                padding: 20px;
             }
 
-            .catalog {
-                padding: 3rem 1.5rem;
+            .header h1 {
+                font-size: 1.8em;
             }
 
-            .cards-container {
-                gap: 1.5rem;
+            .tema-titulo h2 {
+                font-size: 1.5em;
             }
-        }
 
-        @media (max-width: 480px) {
-            .cards-container {
-                grid-template-columns: 1fr;
+            .section h3 {
+                font-size: 1.5em;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Portada -->
-    <section class="hero">
-        <h1>Visión Artificial con Python</h1>
-        <div class="hero-info">
-            <p class="author">MARCO ANTONIO FLORES FLORES</p>
-            <p>Especialidad en Inteligencia Artificial</p>
-            <p>CBTIS 144</p>
+    <div class="container">
+        <div class="header">
+            <h1>Realizado por: MARCO ANTONIO FLORES FLORES</h1>
+            <p>Especialidad de IA del CBTIS 144</p>
         </div>
-    </section>
 
-    <!-- Catálogo -->
-    <section class="catalog">
-        <h2>Proyectos</h2>
-        <div class="cards-container">
-            <!-- Card 1 -->
-            <div class="card">
-                <div class="card-image">📂</div>
-                <div class="card-content">
-                    <span class="card-number">1</span>
-                    <h3>Abrir Imagen con Python</h3>
-                    <a href="abririmagen.html">Ver Proyecto</a>
+        <div class="content-wrapper">
+            <div class="tema-titulo">
+                <h2>Detectar placar</p>
+            </div>
+
+            <div class="section">
+                <h3>📝 Código del Ejemplo</h3>
+                <div class="code-container">
+                    <pre>
+import cv2
+import pytesseract
+import os
+
+# Ruta de Tesseract (ajusta si es diferente)
+pytesseract.pytesseract_cmd = r"C:\Users\MATUTINO\AppData\Local\Programs\Tesseract-OCR\tesseract.exe"
+
+# Lista de placas permitidas
+placas_ok = ["QKJW88", "GKORH52", "OKO96T", "LRJWS52", "XYZ789","DSZ-999-Z","AAA-000-A"]
+
+# ======= PLACA 1 =======
+ruta1 = "placa1.webp"
+if os.path.exists(ruta1):
+    placa1 = cv2.imread(ruta1)
+    if placa1 is not None:
+        placa1 = cv2.resize(placa1, (1000, 400))
+        gris1 = cv2.cvtColor(placa1, cv2.COLOR_BGR2GRAY)
+        binaria1 = cv2.threshold(gris1, 120, 255, cv2.THRESH_BINARY)[1]
+
+        try:
+            texto1 = pytesseract.image_to_string(binaria1, lang="eng")  # inglés para evitar error de idioma
+        except pytesseract.TesseractNotFoundError:
+            print("No se encontró Tesseract, revisa la ruta.")
+            texto1 = ""
+        texto1 = texto1.strip().replace(" ", "").replace("\n", "")
+        print("Placa detectada 1:", texto1)
+        cv2.imshow("Placa 1", binaria1)
+    else:
+        print("No se pudo abrir la imagen placa1.webp")
+        texto1 = ""
+else:
+    print("No existe el archivo placa1.webp en la carpeta del proyecto")
+    texto1 = ""
+
+# ======= PLACA 2 =======
+ruta2 = "placa2.jfif"
+if os.path.exists(ruta2):
+    placa2 = cv2.imread(ruta2)
+    if placa2 is not None:
+        placa2 = cv2.resize(placa2, (1000, 400))
+        gris2 = cv2.cvtColor(placa2, cv2.COLOR_BGR2GRAY)
+        binaria2 = cv2.threshold(gris2, 120, 255, cv2.THRESH_BINARY)[1]
+
+        try:
+            texto2 = pytesseract.image_to_string(binaria2, lang="eng")
+        except pytesseract.TesseractNotFoundError:
+            print("No se encontró Tesseract, revisa la ruta.")
+            texto2 = ""
+        texto2 = texto2.strip().replace(" ", "").replace("\n", "")
+        print("Placa detectada 2:", texto2)
+        cv2.imshow("Placa 2", binaria2)
+    else:
+        print("No se pudo abrir la imagen placa2.jfif")
+        texto2 = ""
+else:
+    print("No existe el archivo placa2.jfif en la carpeta del proyecto")
+    texto2 = ""
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+# ======= VERIFICACIONES =======
+placas_leidas = [texto1, texto2]
+
+print("\n--- PLACAS LEÍDAS ---")
+print(placas_leidas)
+
+# Comprobar si están en la lista permitida
+if texto1 in placas_ok:
+    print("La placa 1 tiene acceso permitido.")
+elif texto1 == "":
+    print("No se detectó texto en la placa 1.")
+else:
+    print("La placa 1 NO tiene permiso o fue mal leída.")
+
+if texto2 in placas_ok:
+    print("La placa 2 tiene acceso permitido.")
+elif texto2 == "":
+    print("No se detectó texto en la placa 2.")
+else:
+    print("La placa 2 NO tiene permiso o fue mal leída.")
+
+# ======= PLACAS RESTANTES =======
+faltantes = []
+if placas_ok[0] not in placas_leidas:
+    faltantes.append(placas_ok[0])
+if placas_ok[1] not in placas_leidas:
+    faltantes.append(placas_ok[1])
+if placas_ok[2] not in placas_leidas:
+    faltantes.append(placas_ok[2])
+if placas_ok[3] not in placas_leidas:
+    faltantes.append(placas_ok[3])
+if placas_ok[4] not in placas_leidas:
+    faltantes.append(placas_ok[4])
+
+print("\n Placas restantes (no escaneadas):")
+print(faltantes)
+                    </pre>
                 </div>
             </div>
 
-            <!-- Card 2 -->
-            <div class="card">
-                <div class="card-image">⚫</div>
-                <div class="card-content">
-                    <span class="card-number">2</span>
-                    <h3>Escala de Grises</h3>
-                    <a href="escaladegrises.html">Ver Proyecto</a>
-                </div>
-            </div>
+            <div class="section">
+                <h3>📚 Glosario de Funciones</h3>
 
-            <!-- Card 3 -->
-            <div class="card">
-                <div class="card-image">ℹ️</div>
-                <div class="card-content">
-                    <span class="card-number">3</span>
-                    <h3>Información de Imagen</h3>
-                    <a href="infoimagen.html">Ver Proyecto</a>
-                </div>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="card">
-                <div class="card-image">🔍</div>
-                <div class="card-content">
-                    <span class="card-number">4</span>
-                    <h3>Ajustar Tamaño</h3>
-                    <a href="ajustarimagen.html">Ver Proyecto</a>
-                </div>
-            </div>
-
-            <!-- Card 5 -->
-            <div class="card">
-                <div class="card-image">📐</div>
-                <div class="card-content">
-                    <span class="card-number">5</span>
-                    <h3>Escala de Imágenes</h3>
-                    <a href="Escaladeimagenes.html">Ver Proyecto</a>
-                </div>
-            </div>
-
-            <!-- Card 6 -->
-            <div class="card">
-                <div class="card-image">↔️</div>
-                <div class="card-content">
-                    <span class="card-number">6</span>
-                    <h3>Movimiento</h3>
-                    <a href="movimiento.html">Ver Proyecto</a>
-                </div>
+                <div class="glosario-item">
+                    <h4>OpenCV</h4>
+                    <p>OpenCV (Open Source Computer Vision Library) es una biblioteca de código abierto que se utiliza principalmente para procesamiento de imágenes y visión por computadora. En Python, se accede a través del módulo llamado cv2.</p>
+                    
+                    <h4>import</h4>
+                    <p>import es una palabra clave (keyword) que se usa para incluir módulos o bibliotecas externas en tu programa.</p>
+                    
+                    <h4>cv2.imread</h4>
+                    <p>Es una función de OpenCV (en el módulo cv2) que se usa para leer una imagen desde un archivo y cargarla en tu programa como una matriz (array de píxeles).</p>
+                    
+                    <h4>cv2.imshow</h4>
+                    <p>Es una función de OpenCV que sirve para mostrar una imagen en una ventana emergente.</p>
+                </div>               
             </div>
         </div>
-    </section>
+    </div>
 </body>
 </html>
